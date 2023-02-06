@@ -1,0 +1,286 @@
+:root{                  /* usamos el root para crea variables en css en este caso estamos definiendo una paleta de colores*/
+    --blanco: #ffffff;    
+    --oscuro: #000000;
+    --primario: #ffc107;
+    --secundario: #0097a7;
+    --gris: #757575;
+    --grisClaro: #dfe9f3;
+}
+
+html{                      
+    font-size: 62.5%;     /* con esto hacemos que un rem valga diez pixeles*/
+    box-sizing: border-box; 
+    scroll-snap-type: y mandatory;   /*con este cdigo podemos elegir como se mueve el scroll, (y eje vertical) (x eje horizontal)*/
+}
+
+
+.servicios,
+.navegacion-principal,
+.formulario{
+    scroll-snap-align: center;   
+    scroll-snap-stop: always;    /** nos indica donde se detiene la pagina cuando haces scroll**/
+}
+
+
+*, *:before, *:after {
+    box-sizing: inherit;
+  }
+body{
+    font-size: 16px;       /* con esto hacemos que un rem valga diez pixeles*/
+    font-family: 'Krub', sans-serif;
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100% );     /*de esta forma se puede hacer un fondo degradado*/
+}  
+
+/** empezamos de lo macro a lo mini, vamos definiendo estilos a cosas generales y mientras mas bajamos somo mas detallistas con los selectores**/
+
+h1{
+    font-size: 3.8rem;     /* tamaño de letra treinta y ocho pixeles */
+}   
+h2{
+    font-size: 2.8rem;
+}   
+h3{
+    font-size: 1.8rem;
+}    
+
+h1, h2, h3{
+    text-align: center;    /*alineamos al centro todos los heading */
+}
+
+/** usamos el . para llamar al selector de html, (.) para clase, (#) para llamar ID´s, y despues esta los selectores de atributos etc**/
+
+.titulo span{              /* aqui esamos seleccionando a todos los span que esten dentro de la etiqueta con la clase .titulo */
+    font-size: 2rem;       /* tamaño de letra veinte pixeles */
+}
+.contenedor{                /* usamos esta clase reutilizable para definir las caracteristicas que se repiten en los diferentes sectores de la pagina*/
+    max-width: 120rem;           /*maxima anchura de area de un elemento*/
+    margin: 0 auto;          /*ajustamos los margens*/
+}
+.nav-bg{
+    background-color: var(--secundario);  /*color de fondo*/
+}
+
+.navegacion-principal{
+    display: flex;                       /* activa flex box se usa en el padre de los elementos a mover*/
+    flex-direction: column;             /*cambia la direccion de los elementos de horizontal (que viene por default) a vertical */
+                               
+} 
+/* ------------------------- cuando la pantalla sea >= a 768 px se va a ejecutar el siguiente codigo ----------------------------**/
+@media (min-width: 768px) {               /*con los media query hacemos que se adapte a todo tipo de moviles la pagina*/
+    .navegacion-principal{
+        flex-direction: row;              /*cambia la direccion de los elementos de vertical a horizontal*/
+        justify-content: space-between;       /*coloca el primer y ultimo elemento de la caja a los bordes y los del medio los separa con la misma distancia solo funciona si los elementos estan en vertical*/
+    }
+}   
+
+.navegacion-principal a{
+    display: block;                           /*hace que el elemento ocupe todo el ancho disponible*/
+    text-align: center;                 /* centra el texto de todos los enlaces*/ 
+    color: var(--blanco);                     /*cambia el color de las letras*/
+    text-decoration: none;                     /* le quta el subrallado a los enlaces*/
+    font-size: 2rem;                        /*tamaño de la fuente*/
+    font-weight: bold;                      /* tipo de fuente a utilizar*/
+    padding: 1rem;                              /*crea espacio del borde del contenedor hacia el elemento*/
+}
+
+.navegacion-principal a:hover{
+    background-color: var(--primario);
+    color: var(--oscuro);
+}
+
+.hero{
+    background-image: url(../img/hero.jpg);  /*agrega una imagen de fondo */
+    background-repeat: no-repeat;           /*hace que no se repita la imagen de fondo*/
+    background-size: cover;                 /* el fondo que colocamos Toma todo el ancho disponible */ 
+    height: 450px;
+    position: relative;         
+    margin-bottom: 2rem;            
+}
+
+.contenido-hero{
+    position: absolute;
+    background-color: rgba(0, 0, 0, .7);
+    background-color: rgb(0 0 0 /70%);
+    width: 100%;
+    height: 100%;
+    /*el siguente pedazo de codigo te va a servir para alinear vertical y horizontalmente siempre*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*fin*/
+
+}
+
+.contenido-hero h2,
+.contenido-hero p {
+    color: var(--blanco);
+}
+
+.boton{
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 3rem;      /*crea distancia del borde del elemento hacia afuera*/
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;     /**coloca el texto en mayuscula**/
+    font-weight: bold;
+    border-radius: .5rem; /* sirve para rendondear el elemento **/
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+
+.boton:hover{
+    cursor: pointer;
+}
+
+/* --------------------------------cuando la pantalla sea >= 480 px o mas va a activarse el siguiente codigo ------------------------**/
+@media (min-width: 480px) {
+    .boton{
+     width: auto;     /* con width auto se resetea el tamaño del elemento */
+    }
+ }
+
+ 
+/** ----------- UTILIDADES: las usamos cuando necesitamos estilos especificos en nuestra pagina------------------------------------**/
+
+.wd-sm-100{
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+   .wd-sm-100{
+    width: auto;
+   }
+
+}
+
+.flex{
+    display: flex;
+}
+
+.alinear-derecha{
+    justify-content: flex-end;
+}
+
+/**-------------------------------- fin utilidades-----------------------------------------------------------------------**/
+.sombra{
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(156,156,156,0.65);
+    -moz-box-shadow: 0px 5px 15px 0px rgba(156,156,156,0.65);
+    box-shadow: 0px 5px 15px 0px rgba(156,156,156,0.65);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+/*------------------------------------------------Codigo de la parte de servicios------------------------------------------------*/
+
+@media (min-width: 768px) {
+    .servicios{
+        display: grid;     /* activa el display grid te ayuda a tener mas control en la posicion y el tamaño de los elementos*/
+        grid-template-columns: repeat(3, 1fr);   /* colocamos el tamaño de los elementos verticalmente, los fr son fracciones del amaño total del contenedor, si lo repetimos 3 veces crea 3 contenedores*/
+        column-gap: 1rem;     /** sirve para separar las columnas**/ 
+    }
+}
+
+
+.servicio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servicio h3{
+    color: var(--secundario);
+    font-weight: normal;
+}
+
+.servicio p{
+    line-height: 2; /*interlineado*/
+    text-align: center;
+}
+
+.servicio .iconos{
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+/*------------- creando el contacto.....--------**/
+
+.formulario{
+    background-color: var(--gris);
+    width: min(60rem , 100%);  /** min( a, b) utiliza el valor mas pequeño entre dos valores**/
+    margin: 0 auto; /** uso esta linea para centrar el formulario porque el contenedor padre del form no es un display flex**/
+    padding: 2rem;
+    border-radius: 1rem;
+
+
+}
+
+.formulario fieldset{
+    border: none;  /*norra el borde */
+}
+
+.formulario legend{
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primario);
+}
+
+@media (min-width: 768px) {
+.contenedor-campos{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  /** usamos GRID-TEMPLATE-COLUMN/ROW para definir las areas de mis columnas o filas**/
+    grid-template-rows: auto auto 20rem;
+    column-gap: 1rem;
+
+}
+
+.campo:nth-child(3),            /** el NTH-CHILD() nos ayuda a que cuando tengamos varios elementos con la misma clase podamos ordenarlos con una enumeracion empezando desde (1) EL PRIMERO hasta (x) EL ULTIMO, en el parentesis colocamos el numero del elemento que queremos llamar**/
+.campo:nth-child(4) {   
+    grid-column: 1 / 3 ;         /** usamos GRID-COLUMN para posicionar un elemento en las areas delimitadas **/
+}
+
+}
+
+.campo{
+    margin-bottom: 1rem;
+}
+
+.campo label{
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.campo textarea{
+    height: 20rem;
+}
+
+.input-text{
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+    
+    
+}
+
+/** ------------------------------------------------------------------footer---------------------------------------------------**/
+ 
+.footer{
+    text-align: center;
+}
+
